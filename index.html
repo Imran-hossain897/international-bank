@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>international bank</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login-area">
+        <h1 class="text-center">welcome to international bank</h1>
+        <div class="submit-area">
+            <h4>log in</h4>
+            <input type="text" class="form-control" placeholder="email">
+            <br>
+            <input type="password" class="form-control" placeholder="password">
+            <br>
+            <button id="login" class="btn btn-success">enter</button>
+        </div>
+    </div>
+    <div id="transation-area">
+        <h1>transation area</h1>
+    </div>
+    <script>
+        const loginbtn = document.getElementById('login');
+        loginbtn.addEventListener('click', function(){
+            const logarea = document.getElementById('login-area');
+            logarea.style.display="none";
+            const transationArea = document.getElementById('transation-area');
+            transationArea.style.display = 'block';
+        })
+    
+    </script>
+</body>
+</html>
