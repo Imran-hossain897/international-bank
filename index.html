@@ -20,7 +20,44 @@
         </div>
     </div>
     <div id="transation-area">
-        <h1>transation area</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="deposit status">
+                    <h5>deposit</h5>
+                    <h2>$ <span id="currentDeposit">00</span> </h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="withdraw status">
+                    <h5>withdraw</h5>
+                    <h2>$ <span id="currentWithdraw">00</span> </h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="balance status">
+                    <h5>balance</h5>
+                    <h2>$ <span id="currentBalance">1240</span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class ="col-md-6">
+                <div class="submit-area">
+                    <h4>deposit</h4>
+                    <input id="amountDeposite" type="text" class="form-control" placeholder="$ amount you want to deposit">
+                    <br>
+                    <button id="add-deposit" class="btn btn-success">deposit</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+               <div class="submit-area">
+                <h4>withdraw</h4>
+                <input id="withdrawAmount" type="text" class="form-control" placeholder="$ amount you want to withdraw">
+                <br>
+                <button id="addWithdraw" class="btn btn-success">withdraw</button>
+               </div>
+            </div>
+        </div>
     </div>
     <script>
         const loginbtn = document.getElementById('login');
@@ -30,6 +67,55 @@
             const transationArea = document.getElementById('transation-area');
             transationArea.style.display = 'block';
         })
+
+        const addNumber = document.getElementById('add-deposit');
+        addNumber.addEventListener('click', function(){
+            // const amountDeposit = document.getElementById('amountDeposite').value;
+            // const depositenumber = parseFloat(amountDeposit);
+            const depositenumber = getInputNumber('amountDeposite');
+
+            // const currentDeposit = document.getElementById('currentDeposit').innerText;
+            // const currentDepositNumber = parseFloat(currentDeposit);
+            // const totalDeposit = depositenumber+currentDepositNumber;
+            //  document.getElementById('currentDeposit').innerText = totalDeposit;
+
+            //  const currentBalance = document.getElementById('currentBalance').innerText;
+            //  const currentBalanceNumber = parseFloat(currentBalance);
+            //  const totalBalance = depositenumber+currentBalanceNumber;
+            //  document.getElementById('currentBalance').innerText=totalBalance;
+
+            currentUpdateSpan('currentDeposit', depositenumber)
+            currentUpdateSpan('currentBalance', depositenumber);
+            document.getElementById('amountDeposite').value ="";
+
+        })
+
+        const withdrawBtn = document.getElementById('addWithdraw');
+        withdrawBtn.addEventListener('click', function(){
+            // const withdrawAmount = document.getElementById('withdrawAmount').value;
+            // const withdrawNumber = parseFloat(withdrawAmount);
+            const withdrawNumber =getInputNumber('withdrawAmount');
+            currentUpdateSpan('currentWithdraw', withdrawNumber);
+            currentUpdateSpan('currentBalance', -1*withdrawNumber)
+            document.getElementById('withdrawAmount').value="";
+           
+        })
+
+        function getInputNumber (id){
+            const amount = document.getElementById(id).value;
+            const amountNumber = parseFloat(amount);
+            return amountNumber;
+           
+        }
+
+        function currentUpdateSpan(id, depositenumber){
+            const current = document.getElementById(id).innerText;
+             const currentNumber = parseFloat(current);
+             const total = depositenumber+currentNumber;
+             document.getElementById(id).innerText=total;
+        }
+
+
     
     </script>
 </body>
